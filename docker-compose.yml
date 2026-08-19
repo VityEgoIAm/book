@@ -1,0 +1,38 @@
+services:
+  php:
+    image: yiisoftware/yii2-php:8.5-apache-latest
+    container_name: app
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    ports:
+      - '8000:80'
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mariadb:12.3.2-noble
+    container_name: db
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: db
+      MARIADB_USER: db
+      MARIADB_PASSWORD: db
+    volumes:
+      - ./runtime:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    healthcheck:
+        test: [
+          "CMD",
+          "/usr/local/bin/healthcheck.sh",
+          "--su-mysql",
+          "--connect",
+          "--innodb_initialized",
+        ]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+
+volumes:
+  db:

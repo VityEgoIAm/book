@@ -67,15 +67,15 @@ $labelOptions = ['class' => 'form-label fw-semibold small'];
                     <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
                     <div class="mb-3">
-                        <?= $form->field($model, 'username', [
+                        <?= $form->field($model, 'login', [
                             'options' => ['class' => 'mb-0'],
                             'template' => sprintf($htmlIcon, '&#128100;'),
                             'inputOptions' => [
                                 'class' => 'form-control',
-                                'placeholder' => 'username',
+                                'placeholder' => 'login',
                                 'autofocus' => true,
                             ],
-                        ])->textInput()->label('Your Username', $labelOptions) ?>
+                        ])->textInput()->label('Your Login', $labelOptions) ?>
                     </div>
 
                     <div class="mb-3">
@@ -106,8 +106,7 @@ $labelOptions = ['class' => 'form-label fw-semibold small'];
                     <?php ActiveForm::end(); ?>
 
                     <div class="text-body-secondary text-center mt-3 small">
-                        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-                        To modify the username/password, check <code>app\models\User::$users</code>.
+                        You may login with <strong>admin/admin</strong>.
                     </div>
 
                 </div>

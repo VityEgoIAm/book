@@ -136,7 +136,7 @@ class BookController extends Controller
                         }
                         foreach ($authors as $author) {
                             $author->book_isbn = $model->isbn;
-                            if (! ($flag = $author->save(false))) {
+                            if (! ($flag = $author->save())) {
                                 $transaction->rollBack();
                                 break;
                             }

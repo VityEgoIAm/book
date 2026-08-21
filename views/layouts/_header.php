@@ -22,6 +22,10 @@ $items = [
         'url' => ['/book/index'],
     ],
     [
+        'label' => 'ТОП 10',
+        'url' => ['/top/index'],
+    ],
+    [
         'label' => 'Войти',
         'url' => ['/site/login'],
         'visible' => Yii::$app->user->isGuest,

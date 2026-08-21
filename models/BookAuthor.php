@@ -35,7 +35,7 @@ class BookAuthor extends \yii\db\ActiveRecord
             [['book_isbn', 'author_id'], 'required'],
             [['author_id'], 'integer'],
             [['book_isbn'], 'string', 'max' => 13],
-            [['author_id'], 'unique', 'targetAttribute' => ['book_isbn', 'author_id']],
+            ['author_id', 'unique', 'targetAttribute' => ['book_isbn', 'author_id']],
             [['book_isbn'], 'exist', 'skipOnError' => true, 'targetClass' => Book::class, 'targetAttribute' => ['book_isbn' => 'isbn']],
         ];
     }

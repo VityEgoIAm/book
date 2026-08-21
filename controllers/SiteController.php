@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace app\controllers;
 
+use app\models\Book;
 use Yii;
 use app\models\ContactForm;
 use app\models\LoginForm;
@@ -78,7 +79,10 @@ class SiteController extends Controller
      */
     public function actionIndex(): string
     {
-        return $this->render('index');
+        $books = Book::find()->all();
+        return $this->render('index', [
+            'books' => $books,
+        ]);
     }
 
     /**
